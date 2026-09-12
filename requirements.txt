@@ -1,0 +1,13 @@
+# Core deep learning / ML stack.
+# Kaggle and Colab already ship most of these preinstalled; this file is
+# mainly for local reference and for pinning anything a notebook needs that
+# isn't in the base image.
+tensorflow>=2.15
+numpy
+pandas
+scikit-learn
+matplotlib
+seaborn
+pyyaml
+pillow
+jupyter

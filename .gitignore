@@ -216,3 +216,33 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# --- Project-specific: EN3150 A03 ---
+# This project runs on Google Colab with a shared team Google Drive; datasets
+# and trained models are NOT committed to GitHub (source of truth = notebooks/).
+
+# Datasets (kept on the shared Google Drive instead)
+data/raw/*
+data/processed/*
+data/splits/*
+!data/raw/.gitkeep
+!data/processed/.gitkeep
+!data/splits/.gitkeep
+
+# Trained model weights / checkpoints
+models/checkpoints/*
+models/final/*
+!models/checkpoints/.gitkeep
+!models/final/.gitkeep
+*.h5
+*.keras
+*.pt
+*.pth
+*.onnx
+*.tflite
+*.ckpt
+
+# Jupyter
+.ipynb_checkpoints/
+*/.ipynb_checkpoints/*
+
