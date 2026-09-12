@@ -10,23 +10,6 @@ pre-trained lightweight SOTA architectures, and write up the trade-offs.
 - TODO
 - TODO
 
-## How we work
-
-Everything lives in self-contained Jupyter notebooks - no shared `src/`
-package or config file. Each notebook defines its own config values and
-implementation at the top, so it can be opened and run independently in
-**Google Colab**.
-
-We train on **Colab with a shared team Google Drive**:
-
-- The dataset, split metadata, and model checkpoints live on the shared
-  Drive folder - nobody downloads the dataset to their own PC.
-- GitHub holds the notebooks (source of truth / version history) plus
-  small result artifacts (figures, metrics, tables).
-- At the start of a session: mount the shared Drive in Colab, then open the
-  notebook (either uploaded to Drive or opened straight from GitHub via
-  Colab's "Open notebook from GitHub").
-
 Datasets and trained model weights are **not** committed to GitHub - see
 [Data & model policy](#data--model-policy) below.
 
@@ -64,10 +47,6 @@ EN3150-A03-Resource-Constrained-CNN/
     ├── confusion_matrices/
     └── tables/                        # comparison CSVs
 ```
-
-Every notebook currently contains **TODO comments only** (no implementation
-yet) - this initial commit is meant to lock in the project layout before we
-start implementing.
 
 ## Data & model policy
 
