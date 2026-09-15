@@ -32,29 +32,33 @@ EN3150-A03-Resource-Constrained-CNN/
 │   ├── 07_sota_efficientnet.ipynb
 │   └── 08_final_comparison.ipynb
 |
-├── data/                               # gitignored except .gitkeep - see below
-│   ├── raw/
-│   ├── processed/
-│   └── splits/                        # small split metadata only
+├── data/
+│   ├── raw/                            # gitignored - never committed
+│   ├── processed/                      # gitignored - never committed
+│   └── splits/                        # train.csv/val.csv/test.csv - TRACKED (small metadata)
 |
 ├── models/                             # gitignored except .gitkeep - see below
 │   ├── checkpoints/
 │   └── final/
 |
 └── results/                            # small, tracked in git (evidence of work)
-    ├── figures/{model_a,model_b,mobilenet,efficientnet,final}/
+    ├── figures/{eda,model_a,model_b,mobilenet,efficientnet,final}/
     ├── metrics/                       # per-model JSON metrics
     ├── confusion_matrices/
     └── tables/                        # comparison CSVs
 ```
 
+`01_data_preparation.ipynb` is the **single source of truth** for the train/val/test split - it writes `data/splits/{train,val,test}.csv` (filepath,label). Every other notebook loads those CSVs; none of them re-derive the split, so all models are trained/evaluated on identical data.
+
 ## Data & model policy
 
-- **Never commit datasets.** `data/raw/`, `data/processed/`, and
-  `data/splits/` are gitignored (only `.gitkeep` placeholders are tracked).
-  Keep the actual dataset on the shared Google Drive folder. Only lightweight
-  split *metadata* (e.g. a CSV of file paths/labels) should ever be written
-  under `data/splits/`.
+- **Never commit raw/processed images.** `data/raw/` and `data/processed/`
+  are gitignored (only `.gitkeep` placeholders are tracked). Keep the actual
+  dataset on the shared Google Drive folder.
+- **Do commit split metadata.** `data/splits/{train,val,test}.csv` (just
+  `filepath,label` rows) is small and *is* tracked in git, since it's the
+  canonical split every model notebook depends on - produced once by
+  `01_data_preparation.ipynb`.
 - **Never commit trained model weights.** `models/checkpoints/` and
   `models/final/` are gitignored, along with common weight file extensions
   (`.h5`, `.keras`, `.pt`, `.pth`, `.onnx`, `.tflite`, `.ckpt`). Save
