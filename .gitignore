@@ -228,6 +228,9 @@ data/splits/*
 !data/raw/.gitkeep
 !data/processed/.gitkeep
 !data/splits/.gitkeep
+# Split metadata (filepath,label CSVs) is small and IS tracked, for
+# reproducibility - only the raw/processed image data above is excluded.
+!data/splits/*.csv
 
 # Trained model weights / checkpoints
 models/checkpoints/*
