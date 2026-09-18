@@ -11,3 +11,4 @@ seaborn
 pyyaml
 pillow
 jupyter
+kaggle  # used by 01_data_preparation.ipynb to download the Intel Image Classification dataset
